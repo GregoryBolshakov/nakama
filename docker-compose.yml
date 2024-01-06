@@ -12,29 +12,22 @@ services:
     ports:
       - "26257:26257"
       - "8080:8080"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health?ready=1"]
-      interval: 3s
-      timeout: 3s
-      retries: 5
   nakama:
     image: registry.heroiclabs.com/heroiclabs/nakama:3.16.0
     entrypoint:
       - "/bin/sh"
       - "-ecx"
       - >
-          /nakama/nakama migrate up --database.address root@cockroachdb:26257 &&
-          exec /nakama/nakama --name nakama1 --database.address root@cockroachdb:26257 --logger.level DEBUG --session.token_expiry_sec 7200 --metrics.prometheus_port 9100
+        /nakama/nakama migrate up --database.address root@cockroachdb:26257 &&
+        exec /nakama/nakama --config /nakama/data/config.yml --name nakama1 --database.address root@cockroachdb:26257 --logger.level DEBUG --session.token_expiry_sec 7200 --metrics.prometheus_port 9100
     restart: "no"
     links:
       - "cockroachdb:db"
     depends_on:
-      cockroachdb:
-        condition: service_healthy
-      prometheus:
-        condition: service_started
+      - cockroachdb
+      - prometheus
     volumes:
-      - ./:/nakama/data
+      - ./data:/nakama/data
     expose:
       - "7349"
       - "7350"
@@ -58,12 +51,10 @@ services:
       global:
         scrape_interval:     15s
         evaluation_interval: 15s
-
       scrape_configs:
         - job_name: prometheus
           static_configs:
           - targets: ['localhost:9090']
-
         - job_name: nakama
           metrics_path: /
           static_configs:

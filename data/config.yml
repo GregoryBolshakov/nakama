@@ -1,0 +1,20 @@
+name: nakama-node-1
+data_dir: "./data/"
+
+runtime:
+  env:
+
+logger:
+  level: "INFO"
+  file: "/nakama/data/logfile.log"
+
+socket:
+  max_message_size_bytes: 128000
+  max_request_size_bytes: 128000
+  read_buffer_size_bytes: 128000
+  write_buffer_size_bytes: 128000
+
+social:
+  steam:
+    publisher_key: ""
+    app_id: 2459930
