@@ -1,0 +1,61 @@
+[
+    {
+        "bundleid": 1,
+        "bundle": {
+            "itemcount": 1,
+            "items": [
+                {
+                    "itemid": 1,
+                    "qty": 64,
+                    "amount": 99,
+                    "description": "This is item 1",
+                    "category": "Category1"
+                }
+            ]
+        }
+    },
+    {
+        "bundleid": 2,
+        "bundle": {
+            "itemcount": 1,
+            "items": [
+                {
+                    "itemid": 3,
+                    "qty": 5,
+                    "amount": 299,
+                    "description": "This is item 2",
+                    "category": "Category2"
+                }
+            ]
+        }
+    },
+    {
+        "bundleid": 3,
+        "bundle": {
+            "itemcount": 3,
+            "items": [
+                {
+                    "itemid": 34567,
+                    "qty": 7,
+                    "amount": 5678,
+                    "description": "This is item 4",
+                    "category": "Category1"
+                },
+                {
+                    "itemid": 45678,
+                    "qty": 2,
+                    "amount": 9876,
+                    "description": "This is item 5",
+                    "category": "Category2"
+                },
+                {
+                    "itemid": 56789,
+                    "qty": 1,
+                    "amount": 4321,
+                    "description": "This is item 6",
+                    "category": "Category3"
+                }
+            ]
+        }
+    }
+]
